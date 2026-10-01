@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad II: Estándares Internacionales y Recepción Boliviana</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Roboto+Slab:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'roboto-slab': ['"Roboto Slab"', 'serif'],
+                        'public-sans': ['"Public Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        petroleum: {
+                            light: '#14b8a6', // teal-500
+                            mid: '#0d9488',   // teal-600
+                            dark: '#0f766e',  // teal-700
+                            darker: '#115e59',// teal-800
+                        },
+                        golden: {
+                            main: '#d97706',  // amber-600
+                            light: '#f59e0b', // amber-500
+                            dark: '#b45309',  // amber-700
+                            bg: '#fffbeb',    // amber-50
+                        },
+                        crimson: {
+                            main: '#be123c',  // rose-700
+                            light: '#e11d48', // rose-600
+                            bg: '#fff1f2',    // rose-50
+                        },
+                        indigo: {
+                            main: '#4338ca',  // indigo-700
+                            bg: '#eef2ff',    // indigo-50
+                            border: '#c7d2fe',// indigo-200
+                        },
+                        emerald: {
+                            main: '#047857',  // emerald-700
+                            bg: '#ecfdf5',    // emerald-50
+                        },
+                        accent: {
+                            blue: '#0369a1',  // sky-700
+                        }
+                    },
+                    boxShadow: {
+                        'academic': '0 4px 20px -2px rgba(0,0,0,0.05)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #ffffff;
+            color: #334155; 
+        }
+
+        #app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #slide-area {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+            background-color: #f8fafc; 
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 2.5rem;
+            display: none;
+            opacity: 0;
+            transform: scale(0.98);
+        }
+
+        .slide.active {
+            display: block;
+            animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .slide::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .slide::-webkit-scrollbar-track {
+            background: #f1f5f9; 
+            border-radius: 4px;
+        }
+        .slide::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .slide::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+
+        /* Variación de bloques didácticos solicitada */
+        .didactic-block {
+            border-left: 4px solid theme('colors.crimson.main');
+            background-color: #ffffff;
+            border-top: 1px solid theme('colors.slate.200');
+            border-right: 1px solid theme('colors.slate.200');
+            border-bottom: 1px solid theme('colors.slate.200');
+            border-radius: 0 0.5rem 0.5rem 0;
+            box-shadow: theme('boxShadow.academic');
+        }
+        
+        .alert-block {
+            border-left: 4px solid theme('colors.golden.main');
+            background-color: theme('colors.golden.bg');
+            border-top: 1px solid theme('colors.golden.100');
+            border-right: 1px solid theme('colors.golden.100');
+            border-bottom: 1px solid theme('colors.golden.100');
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .info-block {
+            border-left: 4px solid theme('colors.indigo.main');
+            background-color: theme('colors.indigo.bg');
+            border-top: 1px solid theme('colors.indigo.border');
+            border-right: 1px solid theme('colors.indigo.border');
+            border-bottom: 1px solid theme('colors.indigo.border');
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+
+        .topic-tag {
+            display: inline-flex;
+            align-items: center;
+            background-color: #f0fdfa; 
+            color: theme('colors.petroleum.dark');
+            border: 1px solid #ccfbf1; 
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            letter-spacing: 0.025em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+        }
+
+        /* Utilidades para impresión */
+        @media print {
+            body { overflow: visible !important; background-color: #ffffff !important; }
+            #app-container { height: auto; display: block; }
+            #progress-bar, header, footer { display: none !important; }
+            #slide-area { overflow: visible !important; background-color: transparent !important; }
+            .slide {
+                display: block !important;
+                position: relative !important;
+                opacity: 1 !important;
+                transform: none !important;
+                animation: none !important;
+                page-break-after: always;
+                height: 100vh !important;
+                overflow: hidden !important;
+                padding: 1cm !important;
+                box-sizing: border-box;
+            }
+            .shadow-academic, .shadow-sm, .shadow-md {
+                box-shadow: none !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body class="font-public-sans antialiased text-slate-700">
+
+<div id="app-container">
+    
+    <!-- Barra de progreso superior -->
+    <div class="h-1.5 w-full bg-slate-100 shrink-0">
+        <div id="progress-bar" class="h-full bg-gradient-to-r from-golden-dark to-golden-light transition-all duration-300 ease-out" style="width: 0%;"></div>
+    </div>
+
+    <!-- Encabezado fijo superior -->
+    <header class="h-14 bg-white border-b border-slate-200 shadow-sm flex items-center justify-between px-6 z-40 shrink-0">
+        <!-- ZONA IZQUIERDA -->
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-md bg-petroleum-dark flex items-center justify-center text-white shadow-sm">
+                <i data-lucide="scale" class="w-4 h-4"></i>
+            </div>
+            <div class="hidden sm:block">
+                <h1 class="text-[10px] font-bold tracking-wider text-slate-800 uppercase leading-tight">MÓDULO: DERECHO DE ALIMENTOS Y LA CONVENCIÓN (UNIDAD II)</h1>
+                <p class="text-[9px] text-slate-500 uppercase tracking-widest">Maestría en Derecho de Familia - ESAM</p>
+            </div>
+        </div>
+
+        <!-- ZONA CENTRAL -->
+        <div class="hidden md:flex justify-center flex-1 px-4">
+            <div id="header-title" class="bg-slate-50 border border-slate-200 text-slate-600 text-xs font-semibold px-4 py-1.5 rounded-full truncate max-w-lg shadow-sm">
+                Cargando...
+            </div>
+        </div>
+
+        <!-- ZONA DERECHA -->
+        <div class="flex items-center gap-4">
+            <div class="text-sm font-semibold text-slate-500 mr-2 font-roboto-slab">
+                <span id="current-slide-num">1</span> <span class="text-slate-300 font-normal">/</span> <span id="total-slides-num">-</span>
+            </div>
+            <button onclick="window.print()" class="text-slate-400 hover:text-golden-dark transition-colors p-1" title="Imprimir / Exportar a PDF">
+                <i data-lucide="printer" class="w-5 h-5"></i>
+            </button>
+            <button onclick="toggleFullscreen()" class="text-slate-400 hover:text-golden-dark transition-colors p-1" title="Pantalla Completa">
+                <i data-lucide="maximize" class="w-5 h-5" id="fs-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Área Central de Diapositivas -->
+    <main id="slide-area">
+        
+        <!-- ==========================================
+             SLIDE 1: PORTADA
+             ========================================== -->
+        <div class="slide active" data-title="Portada">
+            <div class="h-full flex flex-col items-center justify-center max-w-4xl mx-auto text-center px-4 relative">
+                
+                <div class="bg-slate-100 border border-slate-200 rounded-full px-6 py-1.5 mb-6 inline-flex items-center gap-2 shadow-sm">
+                    <i data-lucide="landmark" class="w-4 h-4 text-golden-dark"></i>
+                    <span class="text-[10px] font-bold text-slate-600 tracking-widest uppercase">ESCUELA SUPERIOR DE ADMINISTRACIÓN DE EMPRESAS (ESAM) / U. SIGLO XX</span>
+                </div>
+
+                <div class="text-sm font-bold text-slate-500 tracking-widest uppercase mb-4">
+                    Módulo: Derecho de Alimentos a los Hijos y la Convención sobre los Derechos del Niño
+                </div>
+
+                <!-- Título principal con degradado Dorado -->
+                <h1 class="font-roboto-slab text-4xl md:text-5xl lg:text-5xl font-bold text-slate-800 leading-tight mb-4 uppercase">
+                    UNIDAD II: EL DERECHO DE ALIMENTOS
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-golden-dark via-golden-main to-yellow-500 mt-2">
+                        EN EL SISTEMA INTERNACIONAL Y SU RECEPCIÓN EN BOLIVIA
+                    </span>
+                </h1>
+
+                <p class="font-public-sans text-lg text-slate-600 italic mb-10 max-w-2xl mx-auto">
+                    Apartados 2.5 a 2.11. Versión reorientada (Opiniones consultivas, jurisprudencia contenciosa interamericana, estándares del Comité y recepción legal).
+                </p>
+
+                <div class="flex items-center justify-center w-full max-w-md mx-auto mb-10">
+                    <div class="h-px bg-slate-200 flex-1"></div>
+                    <div class="px-4 text-golden-main">
+                        <i data-lucide="globe" class="w-6 h-6"></i>
+                    </div>
+                    <div class="h-px bg-slate-200 flex-1"></div>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-100 rounded-xl p-6 shadow-sm min-w-[320px]">
+                    <p class="text-[10px] text-slate-400 uppercase tracking-widest mb-1 font-bold">Docente</p>
+                    <p class="font-roboto-slab font-bold text-lg text-slate-700">M.Sc. Alberto Mercado Carrasco</p>
+                    <p class="text-sm text-slate-500 mt-2 font-medium">Maestría en Derecho de Familia y Violencia Familiar</p>
+                    <p class="text-xs text-slate-400 mt-1">Cochabamba, Estado Plurinacional de Bolivia - Octubre de 2026</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 2: NOTA PRELIMINAR
+             ========================================== -->
+        <div class="slide" data-title="NOTA PRELIMINAR. QUÉ CAMBIA EN ESTA VERSIÓN Y POR QUÉ">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag bg-golden-bg text-golden-dark border-golden-100">ADVERTENCIA METODOLÓGICA</span>
+                <h2 class="font-roboto-slab text-3xl font-bold text-slate-800 mb-4">NOTA PRELIMINAR. QUÉ CAMBIA EN ESTA VERSIÓN Y POR QUÉ</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 mb-6">
+                    <div class="col-span-2 space-y-4 text-sm text-slate-700 leading-relaxed">
+                        <p>Este apartado reemplaza al que trabajamos en la primera redacción. La versión anterior organizaba el material alrededor del interés superior del niño y de las sentencias interamericanas que lo desarrollan, de modo que el derecho de alimentos aparecía al final, como una consecuencia que el lector debía extraer.</p>
+                        <p>Esa arquitectura convierte al módulo en un curso general sobre niñez con "alguna aplicación alimentaria". Necesitamos exactamente lo contrario: <strong>un curso sobre derecho de alimentos que utiliza el instrumental internacional como herramienta de trabajo.</strong></p>
+                        
+                        <div class="alert-block p-4 mt-4">
+                            <h4 class="font-bold text-golden-dark text-xs uppercase tracking-wider mb-2 flex items-center gap-2">
+                                <i data-lucide="alert-triangle" class="w-4 h-4"></i> Correcciones de Fuentes (Retiradas)
+                            </h4>
+                            <ul class="list-disc pl-5 text-xs space-y-1">
+                                <li><strong>SCP 0334/2023-S2:</strong> No cita expresamente el art. 27 de la CDN. Se reubica.</li>
+                                <li><strong>SCP 0518/2019-S2:</strong> (Cita a <em>Gangaram Panday</em>) No verificable. Retirada.</li>
+                                <li><strong>Autos Supremos 21/2016, 93/2015 y 32/2016:</strong> Fallaron la segunda verificación. Retirados.</li>
+                                <li><strong>Frase de OC-17/02 sobre "pobreza y separación":</strong> Pertenece al resumen de observaciones de un participante (Instituto Interamericano del Niño, párr. 15), no al razonamiento propio de la Corte.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-span-1">
+                        <div class="didactic-block h-full p-5 flex flex-col justify-center">
+                            <h4 class="font-bold text-crimson-main uppercase text-sm tracking-wider mb-3 flex items-center gap-2">
+                                <i data-lucide="help-circle" class="w-5 h-5"></i> Pregunta en clase
+                            </h4>
+                            <p class="text-slate-700 text-sm mb-4">
+                                Si una frase citada en decenas de manuales proviene del escrito de un organismo participante y no del fallo de la Corte (como ocurre en la OC-17/02), ¿qué nos dice eso sobre cómo circula el conocimiento jurídico?
+                            </p>
+                            <div class="mt-auto bg-crimson-bg p-3 rounded border border-crimson-100 text-xs font-bold text-crimson-main text-center">
+                                Regla de trabajo para el módulo:<br>NO CITEMOS JAMÁS LO QUE NO HAYAMOS ABIERTO.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 3: 2.5. LA FUNCIÓN CONSULTIVA Y OC-17/02
+             ========================================== -->
+        <div class="slide" data-title="2.5. FUNCIÓN CONSULTIVA. OC-17/02">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.5. LA FUNCIÓN CONSULTIVA APLICADA A ALIMENTOS</span>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-2">2.5.1. Qué es una opinión consultiva y su importancia</h2>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-4">2.5.2 a 2.5.4. La Opinión Consultiva OC-17/02</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1 mb-6">
+                    
+                    <div class="bg-white border-t-4 border-t-petroleum-dark border-x border-b border-slate-200 rounded-b-xl rounded-t-sm p-6 shadow-academic">
+                        <h3 class="font-roboto-slab font-bold text-lg text-slate-800 mb-3 flex items-center gap-2">
+                            <i data-lucide="info" class="w-5 h-5 text-petroleum-dark"></i> La Función Consultiva
+                        </h3>
+                        <p class="text-sm text-slate-600 mb-4">
+                            No resuelve un litigio ni declara responsabilidad internacional. <strong>Interpreta normas (Art. 64.1 CADH)</strong>. Paradójicamente, resulta muy útil porque fija el sentido de una disposición con vocación general, desactivando la excusa procesal de "los hechos de ese caso son distintos".
+                        </p>
+                        <div class="bg-slate-50 p-3 rounded text-xs text-slate-700 border border-slate-200 font-medium">
+                            <i data-lucide="search" class="inline w-3 h-3 mr-1"></i> Búsqueda forense: <strong>No existe</strong> en el sistema interamericano una opinión consultiva cuyo objeto directo sea la obligación alimentaria. El trabajo consistirá en construir el traslado.
+                        </div>
+                    </div>
+
+                    <div class="info-block p-6">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-roboto-slab font-bold text-lg text-indigo-900">OC-17/02</h3>
+                            <span class="text-[10px] uppercase font-bold text-indigo-600 bg-white px-2 py-1 rounded border border-indigo-200">28 de agosto de 2002</span>
+                        </div>
+                        <p class="text-xs text-indigo-800 mb-4">Condición Jurídica y Derechos Humanos del Niño. (Cuidado con los resúmenes de participantes vs. voz de la Corte).</p>
+                        
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-indigo-700 mb-2">3 Premisas trasladables a Alimentos:</h4>
+                        <ol class="list-decimal pl-4 space-y-2 text-sm text-indigo-900">
+                            <li>El niño es titular de derechos. La cuota no es un acto benevolente, determina un derecho subjetivo sujeto a <strong>debido proceso y motivación</strong>.</li>
+                            <li>La familia es el ámbito primordial. El Estado tiene el deber de apoyarla. No tener mecanismos eficaces de cobro incumple ese deber de apoyo.</li>
+                            <li>Los procedimientos deben adaptarse al niño (oírlo, decidir en <strong>plazo razonable</strong>). La demora alimentaria no difiere la tutela, <em>frustra el desarrollo</em> irremediablemente.</li>
+                        </ol>
+                    </div>
+
+                </div>
+
+                <div class="didactic-block p-4 mx-auto w-full">
+                    <h4 class="font-bold text-crimson-main uppercase text-xs tracking-wider mb-2 flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4"></i> Pregunta en clase</h4>
+                    <p class="text-slate-700 text-sm">
+                        Si un juez fija Bs. 800 mencionando genéricamente "las necesidades del menor y capacidad del obligado" sin prueba real del flujo de ingresos, ¿podemos controlar ese razonamiento? La OC-17/02 nos da el marco para exigir motivación como garantía de un derecho.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 4: 2.5.5 Y 2.5.6. OC-21/14 Y OC-31/25
+             ========================================== -->
+        <div class="slide" data-title="2.5.5 y 2.5.6. OC-21/14 y OC-31/25">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.5. LA FUNCIÓN CONSULTIVA APLICADA A ALIMENTOS</span>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-2">2.5.5. OC-21/14 y el obligado alimentario que emigra</h2>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-4">2.5.6. OC-31/25 sobre el derecho al cuidado</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="flex flex-col lg:flex-row gap-6 flex-1 mb-6">
+                    
+                    <!-- Tarjeta OC-21/14 -->
+                    <div class="flex-1 bg-white border border-slate-200 rounded-xl p-5 shadow-academic flex flex-col relative overflow-hidden">
+                        <i data-lucide="globe-2" class="absolute -right-4 -top-4 w-24 h-24 text-slate-100"></i>
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-roboto-slab font-bold text-lg text-slate-800">OC-21/14</h3>
+                                <span class="text-[10px] uppercase font-bold text-slate-500">19 de agosto de 2014</span>
+                            </div>
+                            <p class="text-xs text-slate-500 mb-3">Niñas y niños en el contexto de migración.</p>
+                            <p class="text-sm text-slate-700 mb-3">
+                                <strong>Traslado:</strong> La Corte sostiene que la obligación estatal (preservar vida familiar) no se extingue en la frontera. Si el Estado no puede excusarse al expulsar, tampoco puede omitir acción cuando el obligado huye del país.
+                            </p>
+                            <div class="bg-teal-50 p-3 rounded text-xs text-teal-800 border border-teal-100">
+                                <strong class="uppercase tracking-wider">Conexión con Art. 27.4 CDN:</strong> El Estado debe tomar medidas para asegurar el pago transfronterizo. Promover convenios (Ej. Convención Interamericana sobre Obligaciones Alimentarias).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tarjeta OC-31/25 -->
+                    <div class="flex-1 bg-white border border-slate-200 rounded-xl p-5 shadow-academic flex flex-col relative overflow-hidden border-t-4 border-t-emerald-main">
+                        <i data-lucide="heart-handshake" class="absolute -right-4 -top-4 w-24 h-24 text-emerald-50 opacity-50"></i>
+                        <div class="relative z-10">
+                            <div class="flex justify-between items-center mb-2">
+                                <h3 class="font-roboto-slab font-bold text-lg text-emerald-800">OC-31/25</h3>
+                                <span class="text-[10px] uppercase font-bold text-emerald-600 bg-emerald-100 px-2 py-1 rounded">12 de junio de 2025</span>
+                            </div>
+                            <p class="text-xs text-emerald-600 mb-3">Derecho al cuidado (autónomo).</p>
+                            <p class="text-sm text-slate-700 mb-3">
+                                <strong>Advertencia:</strong> No usa términos de "pensión" o "alimentos".
+                                <br><br>
+                                <strong>Traslado Argumentativo:</strong> La Corte califica el cuidado como <strong>trabajo con valor económico y social</strong>. Esto corrige el sesgo estructural del Art. 116.I Ley 603 (que solo mide flujo de dinero). Quien cuida al hijo invierte horas y pierde lucro cesante; <em>eso es aporte real a la proporcionalidad.</em>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="didactic-block p-4 mx-auto w-full">
+                    <h4 class="font-bold text-crimson-main uppercase text-xs tracking-wider mb-2 flex items-center gap-2"><i data-lucide="help-circle" class="w-4 h-4"></i> Ejercicio de cálculo (OC-31/25)</h4>
+                    <p class="text-slate-700 text-sm">
+                        Padre gana Bs. 8000, deposita 1200. Madre gana Bs. 3000 (media jornada, pues la otra mitad cuida al niño 7 días/sem). Si decimos que la madre aporta lo que gasta de sus Bs. 3000, medimos mal: ignoramos el valor económico de sus horas de cuidado. La OC-31/25 da base para computar ese trabajo.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 5: 2.6. JURISPRUDENCIA CONTENCIOSA (Atala Riffo)
+             ========================================== -->
+        <div class="slide" data-title="2.6. JURISPRUDENCIA CONTENCIOSA (I)">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.6. CORTE IDH: CASOS CONTENCIOSOS</span>
+                <h2 class="font-roboto-slab text-3xl font-bold text-slate-800 mb-4">2.6.1. Regla previa y 2.6.2. Atala Riffo vs. Chile</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="alert-block p-3 mb-6 flex items-start gap-3 w-full max-w-4xl mx-auto">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-golden-dark mt-0.5"></i>
+                    <p class="text-sm text-slate-700 font-medium">
+                        <strong>Regla de Trabajo (2.6.1):</strong> Ninguna de las 5 sentencias resolvió una controversia alimentaria. La tarea es: relatar hechos → regla jurídica → explicar expresamente <em>por qué y hasta dónde</em> es trasladable a alimentos.
+                    </p>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-xl shadow-academic flex flex-col flex-1 mb-6 overflow-hidden">
+                    <div class="bg-slate-50 border-b border-slate-200 p-4 flex justify-between items-center">
+                        <h3 class="font-roboto-slab font-bold text-xl text-petroleum-dark">Caso Atala Riffo y niñas Vs. Chile</h3>
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Sentencia de 24 de febrero de 2012</span>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 h-full">
+                        <div class="p-6 border-r border-slate-100 flex flex-col justify-center">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Hechos y Regla (Párrafo 109)</h4>
+                            <p class="text-sm text-slate-600 mb-4">
+                                Litigio de tuición fundado en la orientación sexual de la madre. La Corte condena a Chile indicando que la determinación del interés superior debe hacerse a partir de <strong>daños o riesgos reales y probados</strong>, y no especulativos o imaginarios.
+                            </p>
+                            <p class="text-sm text-slate-600">
+                                Prohíbe basar decisiones en <em>presunciones, estereotipos o consideraciones generalizadas.</em>
+                            </p>
+                        </div>
+
+                        <div class="p-6 bg-petroleum-dark text-white flex flex-col justify-center relative">
+                            <i data-lucide="scale" class="absolute right-4 bottom-4 w-20 h-20 text-petroleum-light opacity-20"></i>
+                            <h4 class="text-xs font-bold text-petroleum-100 uppercase tracking-wider mb-2">Traslado Alimentario</h4>
+                            <p class="text-sm leading-relaxed relative z-10 mb-4">
+                                Regula la estructura de decisión. Si un juez no puede fundar custodia en presunciones, <strong>tampoco puede fundar una cuota alimentaria presumiendo</strong> que "el padre gana más porque prospera" o que "quien no tiene boleta de pago no tiene capacidad". 
+                            </p>
+                            <p class="text-xs text-petroleum-200 italic relative z-10">
+                                Límite: El párrafo 109 se pensó para estereotipos personales. Exige explicar que la estimación de ingresos sin prueba es también una "consideración generalizada".
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 6: 2.6.3 Fornerón y 2.6.4 Furlán
+             ========================================== -->
+        <div class="slide" data-title="2.6.3 y 2.6.4. Fornerón y Furlán">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.6. CORTE IDH: CASOS CONTENCIOSOS</span>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-2">2.6.3. Fornerón e hija vs. Argentina (El tiempo)</h2>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-4">2.6.4. Furlán y familiares vs. Argentina (Pago degradado)</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1 mb-6">
+                    
+                    <!-- Tarjeta Fornerón -->
+                    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-academic flex flex-col">
+                        <div class="flex justify-between mb-3 border-b border-slate-100 pb-2">
+                            <h3 class="font-roboto-slab font-bold text-lg text-slate-800">Fornerón e hija</h3>
+                            <span class="text-[10px] font-bold text-slate-400">27 DE ABRIL DE 2012</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-3">Adopción irregular donde la mora judicial consolidó vínculos de hecho.</p>
+                        <p class="text-sm text-slate-700 mb-3">
+                            <strong>Problema:</strong> Un Estado no puede invocar hechos que su propia inacción produjo.
+                        </p>
+                        <p class="text-sm text-slate-700 flex-1">
+                            <strong>Traslado Alimentario:</strong> El tiempo consolida el incumplimiento. Una demora en ejecución licúa la deuda real y consolida un <em>nivel de vida degradado</em> del niño, que no se recupera años después. 
+                            <br><br><span class="text-xs italic text-slate-500">Límite: Debe acreditarse la demora estatal y que beneficia al incumplidor.</span>
+                        </p>
+                    </div>
+
+                    <!-- Tarjeta Furlán -->
+                    <div class="bg-white border-t-4 border-t-crimson-main border-x border-b border-slate-200 rounded-b-xl rounded-t-sm p-5 shadow-academic flex flex-col">
+                        <div class="flex justify-between mb-3 border-b border-slate-100 pb-2">
+                            <h3 class="font-roboto-slab font-bold text-lg text-crimson-main">Furlán y familiares</h3>
+                            <span class="text-[10px] font-bold text-slate-400">31 DE AGOSTO DE 2012</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-3">Indemnización estatal por daño a niño pagada tras 12 años con bonos devaluados.</p>
+                        <p class="text-sm text-slate-700 mb-3">
+                            <strong>Problema:</strong> Satisfacción degradada de un derecho por mora. El plazo razonable es más riguroso ante vulnerabilidad.
+                        </p>
+                        <p class="text-sm text-slate-700 flex-1">
+                            <strong>Traslado (Precedente Estrella):</strong> Liquidación alimentaria devengada pagada años después. Nominalmente igual, realmente inferior (erosión del poder adquisitivo). La Ley 603 no tiene mecanismo de mantenimiento de valor general. Furlán provee el lenguaje: esto no es "demora", es vulneración.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 7: 2.6.5 Ramírez Escobar y Casos contra Bolivia
+             ========================================== -->
+        <div class="slide" data-title="2.6.5 Ramírez Escobar y 2.6.6 Casos Bolivia">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.6. CORTE IDH: CASOS CONTENCIOSOS</span>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-2">2.6.5. Ramírez Escobar vs. Guatemala (Pobreza no es falta)</h2>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-4">2.6.6. Casos contra Bolivia (Pacheco Tineo y Angulo Losada)</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1 mb-6">
+                    
+                    <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-5 shadow-sm flex flex-col">
+                        <div class="flex justify-between mb-2">
+                            <h3 class="font-roboto-slab font-bold text-lg text-indigo-900">Ramírez Escobar</h3>
+                            <span class="text-[10px] font-bold text-indigo-500 bg-white px-2 py-1 rounded">9 DE MARZO DE 2018</span>
+                        </div>
+                        <p class="text-xs text-indigo-700 mb-4">Separación familiar y adopción justificada en escasez de recursos.</p>
+                        
+                        <p class="text-sm text-indigo-900 mb-3">
+                            <strong>La pobreza no es causa por sí misma.</strong>
+                            <br><br>
+                            <strong>Distinción Vital en Alimentos:</strong>
+                            <ul class="list-disc pl-5 text-sm space-y-1">
+                                <li><em>Insolvencia real:</em> Problema de capacidad (fijación/reducción).</li>
+                                <li><em>Renuencia:</em> Oculta recursos y no paga (apremio).</li>
+                            </ul>
+                            Confundirlas castiga la pobreza con cárcel o premia la ocultación. Ramírez Escobar prohíbe que la carencia sea reproche. 
+                            <br>(El Art. 37.II Ley 548 la recoge, pero acotada a extinción/suspensión de autoridad).
+                        </p>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-academic flex flex-col">
+                        <h3 class="font-roboto-slab font-bold text-lg text-slate-800 mb-4 border-b border-slate-100 pb-2">Casos contra Bolivia</h3>
+                        
+                        <div class="mb-4">
+                            <p class="text-sm font-bold text-petroleum-dark">Familia Pacheco Tineo <span class="text-[10px] font-normal text-slate-400 ml-2">25 DE NOV. DE 2013</span></p>
+                            <p class="text-xs text-slate-600 mt-1">
+                                Expulsión sumaria. La Corte exige que <strong>en todo procedimiento que involucre niñas/os</strong> (incluye asistencia familiar) se evalúe su interés superior y se garantice ser oído. Cita directa e ineludible.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <p class="text-sm font-bold text-petroleum-dark">Angulo Losada <span class="text-[10px] font-normal text-slate-400 ml-2">18 DE NOV. DE 2022</span></p>
+                            <p class="text-xs text-slate-600 mt-1">
+                                Violencia sexual (no alimentos). Ordena reparación estructural: <strong>Capacitación de jueces</strong> bolivianos en estándares de niñez. Base para exigir especialización judicial.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 8: 2.7. ESTÁNDARES DEL COMITÉ CDN
+             ========================================== -->
+        <div class="slide" data-title="2.7. ESTÁNDARES DEL COMITÉ CDN">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.7. COMITÉ DE LOS DERECHOS DEL NIÑO</span>
+                <h2 class="font-roboto-slab text-3xl font-bold text-slate-800 mb-4">El Derecho a ser escuchado, Motivación, Presupuesto y Asistencia</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 mb-6">
+                    
+                    <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">OG 12 (2009): Derecho a ser escuchado</h4>
+                        <p class="text-xs text-slate-500 mb-2">Párrafos 51 y 52 (¡No confundir con OG 12 CESCR!)</p>
+                        <p class="text-sm text-slate-600">
+                            Única mención expresa. Establece que el juez determina la <strong>manutención</strong> y que toda legislación de separación debe incluir el derecho del niño a ser oído. Rompe el modelo del litigio puramente entre adultos.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border-l-4 border-l-crimson-main border-y border-r border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">OG 14 (2013): Interés Superior</h4>
+                        <p class="text-xs text-slate-500 mb-2">Párrafo 47</p>
+                        <p class="text-sm text-slate-600">
+                            Distingue entre <em>evaluar</em> (sopesar salud, educación, vulnerabilidad) y <em>determinar</em> (procedimiento estructurado). Invocar la "etiqueta" de interés superior sin evaluar los dos términos de la proporción del art. 116.I carece de motivación.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">OG 19 (2016): Presupuestos Públicos</h4>
+                        <p class="text-xs text-slate-500 mb-2">Principios de equidad y sostenibilidad</p>
+                        <p class="text-sm text-slate-600">
+                            No dotar de recursos a juzgados, defensorías (DNA) o sistemas de ejecución, vulnera el artículo 4 CDN. El Estado es garante estructural de la eficacia del sistema.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">OG 7 (2006): Primera infancia</h4>
+                        <p class="text-xs text-slate-500 mb-2">CRC/C/GC/7/Rev.1 (Párrafos 20 y 26)</p>
+                        <p class="text-sm text-slate-600">
+                            El eslabón: Conecta la responsabilidad de los padres (Art. 27.2 CDN) con el <strong>deber estatal de asistencia a la familia</strong> (Art. 18.2 CDN). El Estado no puede usar la naturaleza "privada" para omitir tutela.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 9: 2.7.5 y 2.7.6 Recepción Boliviana
+             ========================================== -->
+        <div class="slide" data-title="2.7.5. Recepción (Art. 17 Ley 548)">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.7. RECEPCIÓN EN BOLIVIA</span>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-2">2.7.5. El Art. 17 de la Ley 548 como correlato del Art. 27 CDN</h2>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-4">2.7.6. El Art. 9 de la Ley 548 (Interpretación conforme pro persona)</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="bg-white border border-slate-200 rounded-xl shadow-academic flex-1 mb-6 flex flex-col overflow-hidden">
+                    <div class="bg-golden-50 border-b border-golden-100 p-4">
+                        <h3 class="font-roboto-slab font-bold text-lg text-golden-dark text-center">La Correspondencia Exacta</h3>
+                        <p class="text-xs text-center text-golden-700 mt-1">La Ley 603 regula el <em>instrumento</em>; la Ley 548 (Art. 17) regula el <em>derecho</em> reproduciendo el Art. 27 CDN.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 flex-1">
+                        <div class="p-5 border-r border-slate-200">
+                            <h4 class="font-bold text-slate-700 text-sm mb-4 text-center">Art. 27 CDN</h4>
+                            <ul class="text-sm text-slate-600 space-y-4">
+                                <li><strong>Num 1:</strong> Derecho a nivel de vida adecuado para el desarrollo.</li>
+                                <li><strong>Num 2:</strong> Responsabilidad primordial de los padres "dentro de sus posibilidades y medios".</li>
+                                <li><strong>Num 3:</strong> Obligación estatal de adoptar medidas de ayuda a los padres.</li>
+                            </ul>
+                        </div>
+                        <div class="p-5 bg-slate-50">
+                            <h4 class="font-bold text-petroleum-dark text-sm mb-4 text-center">Art. 17 Ley 548</h4>
+                            <ul class="text-sm text-slate-600 space-y-4">
+                                <li><strong>Parágrafo I (a):</strong> Derecho a un nivel de vida adecuado que asegure desarrollo integral.</li>
+                                <li><strong>Parágrafo I (b):</strong> Obligación principal familiar de garantizarlo "dentro de sus posibilidades y medios".</li>
+                                <li><strong>Parágrafo III:</strong> El Estado debe asegurar condiciones y políticas para que las familias cumplan.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-block p-4 mx-auto w-full max-w-4xl">
+                    <h4 class="font-bold text-indigo-700 text-sm mb-2"><i data-lucide="scale" class="inline w-4 h-4 mr-1"></i> Art. 9 Ley 548: Regla Pro Persona Legislativa</h4>
+                    <p class="text-slate-700 text-sm">
+                        Ordena interpretación de acuerdo a CPE y Tratados <em>"cuando éstos sean más favorables"</em>. No hace falta invocar control difuso constitucional cada vez; el propio legislador ordinario ordena aplicar la norma internacional si protege mejor (útil ante silencios normativos).
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 10: 2.7.7 y 2.7.8 Ley 548 y Asistencia Familiar
+             ========================================== -->
+        <div class="slide" data-title="2.7.7 y 2.7.8 Ley 548 y Asistencia Familiar">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.7. RECEPCIÓN EN BOLIVIA</span>
+                <h2 class="font-roboto-slab text-3xl font-bold text-slate-800 mb-4">2.7.7. Principios y 2.7.8. Menciones Expresas en la Ley 548</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1 mb-6">
+                    
+                    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-academic overflow-y-auto">
+                        <h3 class="font-roboto-slab font-bold text-lg text-petroleum-dark mb-3 border-b border-slate-100 pb-2">Art. 12 Ley 548 (Principios)</h3>
+                        <ul class="space-y-4 text-sm text-slate-600">
+                            <li><strong>a) Interés Superior:</strong> Obliga a apreciar <em>la opinión</em> del NNA (Art. 12 CDN).</li>
+                            <li><strong>b) Prioridad Absoluta:</strong> Preferencia en asignación de recursos.</li>
+                            <li><strong>h) Corresponsabilidad:</strong> Estado, familia y sociedad.</li>
+                            <li><strong>i) Rol de la Familia:</strong> Responsabilidad primaria. Obligación estatal de proveer programas y asistencia (Correlato Art. 18.2 CDN).</li>
+                            <li><strong>j) Ejercicio Progresivo:</strong> Un adolescente participando en su fijación es exigencia legal, no concesión.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white border-t-4 border-t-golden-main border-x border-b border-slate-200 rounded-b-xl rounded-t-sm p-5 shadow-academic flex flex-col">
+                        <h3 class="font-roboto-slab font-bold text-lg text-slate-800 mb-3">Dónde la Ley 548 toca Asistencia Familiar</h3>
+                        <p class="text-xs text-slate-500 mb-3">La sustancia está en la Ley 603, pero la 548 instrumentaliza:</p>
+                        <ul class="space-y-3 text-sm text-slate-600 flex-1">
+                            <li><strong>Art. 45:</strong> La suspensión de autoridad parental NO extingue el deber alimentario.</li>
+                            <li><strong>Art. 57:</strong> La guarda confiere deber de tramitar asistencia (legitimación procesal).</li>
+                            <li><strong>Art. 79 (Instancia Técnica):</strong> Beneficios deben depositarse garantizando <em>mantenimiento de valor</em> (Asimetría con Ley 603 ordinaria).</li>
+                            <li><strong>Art. 188 (Defensorías):</strong> Inciso m) faculta a "promover acuerdos". ¿Limita la legitimación activa? Sistemáticamente (incisos a, b, e) se sostiene que sí pueden demandar en casos críticos.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 11: 2.8. JURISPRUDENCIA BOLIVIANA (I)
+             ========================================== -->
+        <div class="slide" data-title="2.8. JURISPRUDENCIA BOLIVIANA">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.8. JURISPRUDENCIA NACIONAL</span>
+                <h2 class="font-roboto-slab text-3xl font-bold text-slate-800 mb-4">Tribunal Constitucional Plurinacional (Casos 1 al 3)</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="alert-block p-3 mb-4 w-full text-xs text-slate-700 font-medium">
+                    <i data-lucide="info" class="inline w-4 h-4 text-golden-dark mr-1"></i> Advertencia de fuentes (2.8.1): Resoluciones "verificadas" implica contraste con repositorio oficial TCP/TSJ.
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 flex-1 mb-4">
+                    
+                    <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm flex flex-col">
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">2.8.2. SCP 0106/2019-S3</h4>
+                        <span class="text-[9px] font-bold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded uppercase w-max mb-3">9 DE ABRIL DE 2019</span>
+                        <p class="text-xs text-slate-700 font-bold mb-2">Proporcionalidad como operación verificable.</p>
+                        <p class="text-xs text-slate-600 flex-1">
+                            Vocales elevaron de Bs2000 a Bs12000 sin expresar razones o necesidades reales vs ingresos efectivos. TCP anula el Auto por falta de motivación. (Aplicación práctica de Atala Riffo: sin prueba de flujo real, el monto es arbitrario).
+                        </p>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm flex flex-col">
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">2.8.3. SCP 0023/2019-S1</h4>
+                        <span class="text-[9px] font-bold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded uppercase w-max mb-3">25 DE MARZO DE 2019</span>
+                        <p class="text-xs text-slate-700 font-bold mb-2">La prueba en la reducción.</p>
+                        <p class="text-xs text-slate-600 flex-1">
+                            Proceso de reducción. TCP anula resolución por falta de valoración de prueba documental del obligado. El juez no puede presumir mala fe y rechazar sin analizar la variación económica.
+                        </p>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-lg p-5 shadow-sm flex flex-col">
+                        <h4 class="font-bold text-slate-800 text-sm mb-1">2.8.4. SCP 0035/2018-S1</h4>
+                        <span class="text-[9px] font-bold text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded uppercase w-max mb-3">9 DE MARZO DE 2018</span>
+                        <p class="text-xs text-slate-700 font-bold mb-2">Debido proceso en apremio.</p>
+                        <p class="text-xs text-slate-600 flex-1">
+                            El TCP invoca la Declaración Americana, Declaración Universal y PIDCP, pero <em>no cita la CDN ni a la Corte IDH</em>. Refleja un patrón de apertura genérica, sin aplicar el corpus especializado de niñez.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 12: 2.8. JURISPRUDENCIA BOLIVIANA (II)
+             ========================================== -->
+        <div class="slide" data-title="2.8. JURISPRUDENCIA BOLIVIANA (II)">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.8. JURISPRUDENCIA NACIONAL</span>
+                <h2 class="font-roboto-slab text-3xl font-bold text-slate-800 mb-4">TCP (Casos 4 y 5), TSJ y el Diagnóstico Final</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1 mb-6">
+                    <div class="space-y-4">
+                        <div class="bg-white border-l-4 border-l-petroleum-dark rounded-lg p-4 shadow-sm">
+                            <h4 class="font-bold text-slate-800 text-sm">2.8.5. SCP 0731/2024-S1 <span class="text-[10px] text-slate-400 font-normal ml-2">31 DE DIC. 2024</span></h4>
+                            <p class="text-xs text-slate-600 mt-2">Ponderación explícita. Hombre con cardiopatía en apremio (hija >18 años). El TCP hace prevalecer el derecho alimentario exigiendo riesgo vital "directo" para frenar el apremio. No citó jurisprudencia IDH (ej. posición de garante estatal de privados de libertad).</p>
+                        </div>
+                        <div class="bg-white border-l-4 border-l-petroleum-dark rounded-lg p-4 shadow-sm">
+                            <h4 class="font-bold text-slate-800 text-sm">2.8.6. SCP 0334/2023-S2</h4>
+                            <p class="text-xs text-slate-600 mt-2">Flexibiliza subsidiariedad del amparo en niñez; prohíbe obligar a presentar nuevas liquidaciones si ya se practicaron (demora injusta). (Nota: no invoca expresamente Art. 27 CDN como se creía).</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
+                            <h4 class="font-bold text-slate-800 text-sm">2.8.7. Protocolo de Actuación TSJ (Gastos Ext.)</h4>
+                            <p class="text-xs text-slate-600 mt-2">Modulación: El apremio corporal por gastos extraordinarios procede <strong>únicamente</strong> si están vinculados a la vida/salud (Cita SCP 1141/2025-S3, no verificable directo). Es restrictiva, no prohibitiva total.</p>
+                        </div>
+                        <div class="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
+                            <h4 class="font-bold text-slate-800 text-sm">2.8.8. Autos Supremos TSJ</h4>
+                            <p class="text-xs text-slate-600 mt-2">AS 453/2022 (Informalismo); AS 442/2023 (Prescripción suspendida en minoridad, ¡ojo: aplica a herencia, uso en alimentos es analógico!). Notable escasez, quizás por el diseño recursivo (sin casación general en alimentos).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="didactic-block p-4 mx-auto w-full max-w-4xl bg-crimson-bg border-l-crimson-main">
+                    <h4 class="font-bold text-crimson-dark uppercase text-sm tracking-wider mb-2">2.8.9. El Diagnóstico Final</h4>
+                    <p class="text-slate-800 text-sm font-medium">
+                        En la muestra verificada, NO se registra aplicación de jurisprudencia interamericana. El control de convencionalidad alimentaria en Bolivia es un enunciado, no una práctica. Esto es una <strong>oportunidad profesional gigante</strong>: el primer abogado que litigue con Atala Riffo o Furlán en asistencia ocupará un hueco real.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 13: 2.9. NNUU Y AGENDA 2030
+             ========================================== -->
+        <div class="slide" data-title="2.9. NACIONES UNIDAS Y AGENDA 2030">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.9. BOLIVIA EN EL SISTEMA INTERNACIONAL</span>
+                <h2 class="font-roboto-slab text-3xl font-bold text-slate-800 mb-4">Lo que el Estado Informa y el Silencio Revelador</h2>
+                <div class="h-px w-full bg-slate-200 mb-6"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 mb-6">
+                    
+                    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-academic flex flex-col">
+                        <h3 class="font-roboto-slab font-bold text-md text-petroleum-dark mb-3 border-b border-slate-100 pb-2">2.9.1. Observaciones CRC 2023</h3>
+                        <p class="text-sm text-slate-600 mb-3">El Comité evalúa pobreza (meta 1.2), recomienda aumentar prestaciones, agua, vivienda...</p>
+                        <p class="text-sm font-bold text-crimson-main mt-auto">SILENCIO REVELADOR:</p>
+                        <p class="text-xs text-slate-600">Ni pensión, ni asistencia, ni obligación alimentaria figuran. El control internacional de Bolivia ignora la obligación privada, se enfoca solo en prestaciones estatales.</p>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-academic flex flex-col">
+                        <h3 class="font-roboto-slab font-bold text-md text-petroleum-dark mb-3 border-b border-slate-100 pb-2">2.9.2 y 2.9.3. EPU y Agenda 2030</h3>
+                        <p class="text-xs text-slate-600 mb-3">El EPU de 2025 confirma el mismo vacío.</p>
+                        <p class="text-xs text-slate-600 mb-3">Los ODS (no vinculantes pero evaluables): Meta 1.2 (pobreza), 1.3 (prot. social), 5.4 (valor del cuidado - OC-31/25), 16.3 (acceso a justicia).</p>
+                        <p class="text-xs text-slate-600 bg-slate-50 p-2 rounded border border-slate-100">Bolivia informa reducción por "Bonos". <strong>No mide ni informa sobre transferencias alimentarias familiares incumplidas.</strong></p>
+                    </div>
+
+                    <div class="bg-white border-t-4 border-t-golden-main border-x border-b border-slate-200 rounded-b-xl rounded-t-sm p-5 shadow-academic flex flex-col">
+                        <h3 class="font-roboto-slab font-bold text-md text-slate-800 mb-3 border-b border-slate-100 pb-2">2.9.4. Registro de Deudores</h3>
+                        <p class="text-sm text-slate-600 mb-3">Bolivia carece de un registro (Proyecto Ley 055 de 2024, con 7 restricciones: pasaporte, cargo público, etc.).</p>
+                        <p class="text-xs text-slate-700 bg-golden-50 p-3 rounded">
+                            <strong>Paradoja:</strong> Usamos el apremio (el más duro contra derechos) que es ineficaz financieramente (no genera ingresos presos), mientras vecinos usan registros efectivos.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 14: 2.10 SÍNTESIS
+             ========================================== -->
+        <div class="slide" data-title="2.10. SÍNTESIS DEL APARTADO">
+            <div class="max-w-4xl mx-auto h-full flex flex-col justify-center">
+                <span class="topic-tag mx-auto">2.10. SÍNTESIS DEL APARTADO</span>
+                <h2 class="font-roboto-slab text-4xl font-bold text-slate-800 mb-6 text-center">4 Aportes del Derecho Internacional</h2>
+                <div class="h-px w-full bg-slate-200 mb-8"></div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <div class="bg-white border-l-4 border-l-petroleum-dark p-5 rounded-r shadow-sm">
+                        <h4 class="font-bold text-slate-800 mb-2">1. Estándar para Motivar</h4>
+                        <p class="text-sm text-slate-600">OG 14 (Evaluar vs. Determinar) y <em>Atala Riffo</em> (Riesgos probados, no consideraciones generalizadas).</p>
+                    </div>
+                    <div class="bg-white border-l-4 border-l-golden-main p-5 rounded-r shadow-sm">
+                        <h4 class="font-bold text-slate-800 mb-2">2. Fundamento para Escuchar</h4>
+                        <p class="text-sm text-slate-600">OG 12 (Párr. 51-52, exige oír al niño en la "manutención") y Art. 12.a Ley 548.</p>
+                    </div>
+                    <div class="bg-white border-l-4 border-l-indigo-600 p-5 rounded-r shadow-sm">
+                        <h4 class="font-bold text-slate-800 mb-2">3. Mecanismo Transfronterizo</h4>
+                        <p class="text-sm text-slate-600">Art. 27.4 CDN y Convención Interamericana sobre Obligaciones Alimentarias (Elección de foro, sin exequátur oneroso).</p>
+                    </div>
+                    <div class="bg-white border-l-4 border-l-crimson-main p-5 rounded-r shadow-sm">
+                        <h4 class="font-bold text-slate-800 mb-2">4. Parámetro Estatal</h4>
+                        <p class="text-sm text-slate-600">Art. 4 CDN, OG 19 (Presupuestos), ODS. Justicia sin recursos vulnera el tratado.</p>
+                    </div>
+                </div>
+
+                <div class="text-center text-slate-700 bg-slate-50 p-6 rounded-lg border border-slate-200">
+                    <p class="font-medium text-lg mb-2">La distancia no está en la ley.</p>
+                    <p class="text-sm">El Art. 109 y 116 Ley 603, Art. 17 Ley 548 están alineados al estándar. <strong>El déficit es judicial y argumentativo</strong>: falta motivación concreta, participación real, uso de jurisprudencia IDH e infraestructura de cobro. Esto exige <em>mejor trabajo profesional.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 15: 2.11 ACTIVIDAD PADLET
+             ========================================== -->
+        <div class="slide" data-title="2.11. ACTIVIDAD EN PIZARRA (PADLET)">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag">2.11. ACTIVIDAD PRÁCTICA</span>
+                <h2 class="font-roboto-slab text-3xl font-bold text-slate-800 mb-4">Pizarra Colaborativa (Padlet)</h2>
+                <div class="h-px w-full bg-slate-200 mb-6 shrink-0"></div>
+
+                <p class="text-sm text-slate-600 mb-4 shrink-0 font-medium">Elige 3 preguntas (máx. 200 palabras, citas precisas). Comenta 2 entradas de compañeros.</p>
+
+                <div class="flex-1 overflow-y-auto space-y-4 pr-2 pb-6">
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg shadow-sm">
+                        <span class="text-crimson-main font-bold text-sm mr-2">1.</span>
+                        <span class="text-sm text-slate-700">La OC-17/02 no trata alimentos. Explique por qué es aplicable y cuál es el límite de esa aplicación.</span>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg shadow-sm">
+                        <span class="text-crimson-main font-bold text-sm mr-2">2.</span>
+                        <span class="text-sm text-slate-700">Frase "carencia de recursos...": Ubíquela en la OC-17/02 (Párr. 15, IIN). Consecuencias de citar de segunda mano.</span>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg shadow-sm">
+                        <span class="text-crimson-main font-bold text-sm mr-2">3.</span>
+                        <span class="text-sm text-slate-700">Compare función consultiva vs contenciosa de la Corte IDH. ¿Cuál es más útil en alimentos y por qué?</span>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg shadow-sm">
+                        <span class="text-crimson-main font-bold text-sm mr-2">4.</span>
+                        <span class="text-sm text-slate-700">Argumente con la OC-31/25, Art. 116.I Ley 603 y Art. 64.I CPE que el trabajo de cuidado debe computarse financieramente.</span>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg shadow-sm">
+                        <span class="text-crimson-main font-bold text-sm mr-2">5.</span>
+                        <span class="text-sm text-slate-700">Art. 17 Ley 548 vs Art. 27 CDN. Transcriba, identifique correspondencias, déficits y la vía pro persona (Art. 9).</span>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg shadow-sm">
+                        <span class="text-crimson-main font-bold text-sm mr-2">6.</span>
+                        <span class="text-sm text-slate-700">Art. 37.II Ley 548 (Pobreza). ¿Cubre íntegramente el estándar internacional? Fundamente.</span>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg shadow-sm">
+                        <span class="text-crimson-main font-bold text-sm mr-2">7.</span>
+                        <span class="text-sm text-slate-700">Defensorías (Art. 188 inc. m e i). ¿Tienen legitimación para demandar asistencia familiar en mora materno/paterna real?</span>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg shadow-sm">
+                        <span class="text-crimson-main font-bold text-sm mr-2">8.</span>
+                        <span class="text-sm text-slate-700">OG 12 (Párr. 51). ¿Qué mecanismo propondría para hacer efectivo el derecho del niño a ser oído sin daño?</span>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg shadow-sm">
+                        <span class="text-crimson-main font-bold text-sm mr-2">9.</span>
+                        <span class="text-sm text-slate-700">Ausencia de citas IDH en nuestra jurisprudencia. Proponga 3 explicaciones y evalúe la más plausible.</span>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-lg shadow-sm">
+                        <span class="text-crimson-main font-bold text-sm mr-2">10.</span>
+                        <span class="text-sm text-slate-700">Art. 127.II Ley 603 (Apremio por "haber incumplido" y no "pudiendo pagar"). ¿Compatible con la distinción renuencia/insolvencia?</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             SLIDE 16: ANEXO DE FUENTES
+             ========================================== -->
+        <div class="slide" data-title="ANEXO. Registro de Fuentes">
+            <div class="max-w-6xl mx-auto h-full flex flex-col">
+                <span class="topic-tag bg-slate-100 text-slate-600 border-slate-200">ANEXO</span>
+                <h2 class="font-roboto-slab text-2xl font-bold text-slate-800 mb-4">Registro de fuentes, fechas de emisión y limitaciones</h2>
+                
+                <div class="flex-1 overflow-auto border border-slate-200 rounded-lg shadow-sm">
+                    <table class="w-full text-left text-xs text-slate-600 border-collapse">
+                        <thead class="bg-slate-100 sticky top-0 z-10 text-slate-700">
+                            <tr>
+                                <th class="p-3 border-b border-slate-200 font-bold uppercase w-1/4">Tipo</th>
+                                <th class="p-3 border-b border-slate-200 font-bold uppercase w-1/2">Resolución / Sentencia</th>
+                                <th class="p-3 border-b border-slate-200 font-bold uppercase w-1/4">Fecha de Emisión</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="p-3 font-medium text-petroleum-dark bg-slate-50" colspan="3">A. Jurisprudencia Constitucional Boliviana</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">SCP 0035/2018-S1</td>
+                                <td class="p-3">Debido proceso en ejecución del apremio. (Invoca DADDH, DUDH, PIDCP, sin cita CDN/Corte IDH).</td>
+                                <td class="p-3 font-bold text-slate-700">9 de marzo de 2018</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">SCP 0023/2019-S1</td>
+                                <td class="p-3">Prueba de posibilidades en reducción (Valoración probatoria).</td>
+                                <td class="p-3 font-bold text-slate-700">25 de marzo de 2019</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">SCP 0106/2019-S3</td>
+                                <td class="p-3">Anula Auto de Vista por monto inmotivado, exige ponderación proporcional ingresos/necesidades.</td>
+                                <td class="p-3 font-bold text-slate-700">9 de abril de 2019</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">SCP 0731/2024-S1</td>
+                                <td class="p-3">Ponderación explícita (riesgo vida/salud apremiado vs. derecho alimentario). Deniega tutela.</td>
+                                <td class="p-3 font-bold text-slate-700">31 de diciembre de 2024</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">SCP 0334/2023-S2</td>
+                                <td class="p-3">Abstrae subsidiariedad en amparo de niñez. (Nota: No cita expresamente Art 27 CDN en resumen oficial).</td>
+                                <td class="p-3 text-slate-500 italic">No verif. en Gaceta</td>
+                            </tr>
+
+                            <tr>
+                                <td class="p-3 font-medium text-petroleum-dark bg-slate-50" colspan="3">B. Corte IDH - Contenciosa</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">Atala Riffo vs. Chile</td>
+                                <td class="p-3">Párrafo 109: Determinación basada en daños o riesgos reales/probados, no especulaciones/estereotipos.</td>
+                                <td class="p-3 font-bold text-slate-700">24 de febrero de 2012</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">Fornerón vs. Argentina</td>
+                                <td class="p-3">Demora procesal. El tiempo que imputablemente consolida situaciones de hecho (incumplimiento).</td>
+                                <td class="p-3 font-bold text-slate-700">27 de abril de 2012</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">Furlán vs. Argentina</td>
+                                <td class="p-3">Pago demorado que erosiona poder adquisitivo. Satisfacción degradada de derechos.</td>
+                                <td class="p-3 font-bold text-slate-700">31 de agosto de 2012</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">Pacheco Tineo vs. Bolivia</td>
+                                <td class="p-3">Procedimiento NNA: Exige evaluar ISN y oír al niño/a. Oponibilidad contra Estado Boliviano.</td>
+                                <td class="p-3 font-bold text-slate-700">25 de noviembre de 2013</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">Ramírez Escobar vs. Gua</td>
+                                <td class="p-3">La pobreza por sí misma no es causal. (Distinción renuencia vs insolvencia).</td>
+                                <td class="p-3 font-bold text-slate-700">9 de marzo de 2018</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">Angulo Losada vs. Bolivia</td>
+                                <td class="p-3">Capacitación de operadores de justicia bolivianos en estándares interamericanos.</td>
+                                <td class="p-3 font-bold text-slate-700">18 de noviembre de 2022</td>
+                            </tr>
+
+                            <tr>
+                                <td class="p-3 font-medium text-petroleum-dark bg-slate-50" colspan="3">C. Corte IDH - Opiniones Consultivas</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">OC-17/02</td>
+                                <td class="p-3">Condición jurídica del Niño. Limitación: Muchas frases famosas son de observadores, no de la Corte.</td>
+                                <td class="p-3 font-bold text-slate-700">28 de agosto de 2002</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">OC-21/14</td>
+                                <td class="p-3">Niñez en migración. Vida familiar vs. frontera y deber del Estado protector.</td>
+                                <td class="p-3 font-bold text-slate-700">19 de agosto de 2014</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold">OC-31/25</td>
+                                <td class="p-3">El Cuidado como derecho. Trabajo con valor económico (Cálculo de cuota alimentaria).</td>
+                                <td class="p-3 font-bold text-slate-700">12 de junio de 2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Pie fijo Inferior (Botones de navegación) -->
+    <footer class="h-16 bg-white border-t border-slate-200 flex items-center justify-between px-6 z-40 shrink-0 mt-auto">
+        <button id="btn-prev" onclick="prevSlide()" class="flex items-center gap-2 px-4 py-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors disabled:opacity-30 disabled:cursor-not-allowed font-medium text-sm">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            Anterior
+        </button>
+
+        <div class="hidden md:flex items-center gap-4 text-xs text-slate-400 font-medium">
+            <span class="flex items-center gap-1 border border-slate-200 rounded px-1.5 py-0.5 bg-slate-50 shadow-sm"><i data-lucide="arrow-left" class="w-3 h-3"></i></span>
+            <span>o</span>
+            <span class="flex items-center gap-1 border border-slate-200 rounded px-2 py-0.5 bg-slate-50 shadow-sm">Espacio</span>
+            <span>o</span>
+            <span class="flex items-center gap-1 border border-slate-200 rounded px-1.5 py-0.5 bg-slate-50 shadow-sm"><i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+        </div>
+
+        <button id="btn-next" onclick="nextSlide()" class="flex items-center gap-2 px-4 py-2 rounded-lg bg-petroleum-dark hover:bg-petroleum-mid text-white transition-colors disabled:opacity-30 disabled:cursor-not-allowed shadow-sm font-medium text-sm">
+            Siguiente
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+    </footer>
+
+</div>
+
+<script>
+    // Inicializar Iconos Lucide
+    lucide.createIcons();
+
+    // Variables de estado
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    
+    // Elementos UI
+    const elCurrentNum = document.getElementById('current-slide-num');
+    const elTotalNum = document.getElementById('total-slides-num');
+    const elProgressBar = document.getElementById('progress-bar');
+    const elHeaderTitle = document.getElementById('header-title');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+
+    // Inicialización UI
+    elTotalNum.textContent = totalSlides;
+    updateUI();
+
+    function updateUI() {
+        // Actualizar visibilidad de slides
+        slides.forEach((slide, index) => {
+            if (index === currentSlideIndex) {
+                slide.classList.add('active');
+                slide.scrollTop = 0; 
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        // Actualizar barra de progreso
+        const progress = (currentSlideIndex / (totalSlides - 1)) * 100;
+        elProgressBar.style.width = `${progress}%`;
+
+        // Actualizar contador
+        elCurrentNum.textContent = currentSlideIndex + 1;
+        
+        // Actualizar título de encabezado 
+        const currentTitle = slides[currentSlideIndex].getAttribute('data-title');
+        elHeaderTitle.textContent = currentTitle;
+
+        if(currentSlideIndex === 0) {
+            elHeaderTitle.style.opacity = "0";
+        } else {
+            elHeaderTitle.style.opacity = "1";
+        }
+
+        // Estado de botones Prev/Next
+        btnPrev.disabled = currentSlideIndex === 0;
+        btnNext.disabled = currentSlideIndex === totalSlides - 1;
+    }
+
+    // Navegación
+    function nextSlide() {
+        if (currentSlideIndex < totalSlides - 1) {
+            currentSlideIndex++;
+            updateUI();
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlideIndex > 0) {
+            currentSlideIndex--;
+            updateUI();
+        }
+    }
+
+    // Teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') {
+            nextSlide();
+        } else if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === ' ' || e.code === 'Space') {
+            if(document.activeElement.tagName !== "BUTTON") {
+                e.preventDefault();
+                nextSlide();
+            }
+        }
+    });
+
+    // Fullscreen
+    function toggleFullscreen() {
+        const fsIcon = document.getElementById('fs-icon');
+        
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Error intentando activar pantalla completa: ${err.message}`);
+            });
+            fsIcon.setAttribute('data-lucide', 'minimize');
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+                fsIcon.setAttribute('data-lucide', 'maximize');
+            }
+        }
+        lucide.createIcons();
+    }
+
+    document.addEventListener('fullscreenchange', () => {
+        const fsIcon = document.getElementById('fs-icon');
+        if (!document.fullscreenElement) {
+            fsIcon.setAttribute('data-lucide', 'maximize');
+        } else {
+            fsIcon.setAttribute('data-lucide', 'minimize');
+        }
+        lucide.createIcons();
+    });
+
+</script>
+</body>
+</html>
